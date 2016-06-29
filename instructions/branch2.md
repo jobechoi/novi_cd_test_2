@@ -29,31 +29,31 @@ Create a controller and render it. The files we'll be using are all under the **
 
 ![](http://i67.tinypic.com/2507879.jpg)
 
-In `main.js`, we've started a function called `mainController`. Go ahead and add the two arguments `$scope` and `$http`:
+In `main.js`, we've started to define the controller on the todo app. Go ahead and add the two arguments `$scope` and `$http`:
 
 ```javascript
-function mainController($scope, $http){
+todo.controller('TodoController', function($scope, $http){
 
 }
 ```
 
 ###Use controller in HTML
-Open `index.html` and define the use of the `mainController`. Find the `<body>` element and add code so it looks like this:
+Open `index.html` and define the use of the `TodoController`. Find the `<body>` element and add code so it looks like this:
 
 ```html
-<body ng-controller="mainController">
+<body ng-controller="TodoController">
   <div class="container">
 
   </div>
 </body>
 ```
-What do you think this is doing `ng-controller="mainController"`?
+What do you think this is doing `ng-controller="TodoController"`?
 
 ###Store form data
 Back in `main.js`, in the controller, go ahead and define an object to store form data. It will live on the `$scope` object:
 
 ```javascript
-function mainController($scope, $http){
+todo.controller('TodoController', function($scope, $http){
   $scope.formData = {};
 
 }
@@ -63,7 +63,7 @@ function mainController($scope, $http){
 Now back in `index.html` create a form within the `<div class="container">` element so your code looks like this:
 
 ```html
-<body ng-controller="mainController">
+<body ng-controller="TodoController">
   <div class="container">
     <div id="todo-form" class="row">
       <div class="col-sm-8 col-sm-offset-2 text-center">
@@ -215,7 +215,7 @@ The Angular directive `ng-click` will invoke the function `createTodo()` wheneve
 Your HTML code in `<body>` should now look like this:
 
 ```html
-<body ng-controller="mainController">
+<body ng-controller="TodoController">
     <div class="container">
         <div id="todo-form" class="row">
           <div class="col-sm-8 col-sm-offset-2 text-center">
