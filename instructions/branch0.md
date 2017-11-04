@@ -1,14 +1,14 @@
 # Project Structure, Server Setup and Database Setup
 This part of the workshop should take no more than 60 minutes. If you find yourself stuck on any one step for more than 10 minutes, ask for help.
 
-##What we'll cover in this section
+## What we'll cover in this section
 +   [Package.json and Installing Dependencies with NPM](#packagejson-and-installing-dependencies-with-npm)
 +   [Node/Express Configuration](#nodeexpress-configuration)
 +   [Connect to database](#connect-to-database)
 +   [Define schema](#define-schema)
 +   [Define model](#define-model)
 
-##Package.json and Installing Dependencies with NPM
+## Package.json and Installing Dependencies with NPM
 
 `package.json` is used to configure the [npm](https://docs.npmjs.com/getting-started/what-is-npm) package manager. We can list dependencies and set up commands in this file. 
 
@@ -52,7 +52,7 @@ app.use(bodyParser.json()); // Parses app
 
 It's not super important that you understand all the details. But can you see some patterns around the use of the functions `require(...)` and `app.use(...)`?
 
-###Connect to database
+### Connect to database
 In this section, we want to connect to the database and set up a model. A model is a constructor function that will return an instance of a specially formatted object that is stored in the database. Mongoose is an abstraction layer between the server and the database that makes it easy to model objects using plain JavaScript.
 
 In `server.js`, connect to Mongoose. Not sure how? Copy/paste or type the following code on the line under the appropriate comment. Comments in JavaScript often look like this `//Some comment text`:
@@ -61,7 +61,7 @@ In `server.js`, connect to Mongoose. Not sure how? Copy/paste or type the follow
 mongoose.connect('mongodb://localhost/app');
 ```
 
-###Define schema
+### Define schema
 We need to define the variable `toDoSchema` that will be used to define the Mongoose schema (structure) of the ToDo object in the database. Add the following code to `server.js`, under the appropriate comment:
 
 ```javascript
@@ -105,7 +105,7 @@ var toDoSchema = new mongoose.Schema({
 
 We haven't covered objects or for that matter properties, but see if you can identify the two properties, and their `types`.
 
-###Define model
+### Define model
 Now let's create a Mongoose model called `ToDo`:
 
 ```javascript
