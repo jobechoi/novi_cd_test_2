@@ -1,11 +1,11 @@
-#Building an Angular Front-End (User interface)
+# Building an Angular Front-End (User interface)
 You have until 3PM to complete this part of the workshop.
 
 But before we get into it, why don't we test our app? Since we used a cloud development environment like Codeanywhere, one of the benefits is your code is already "in the cloud" and the amount of work to deploy it "to the cloud" is minimal. In fact, since we started off with a preconfigured MEAN container, we're actually one click away from "running" our code. 
 
 Take a moment and figure out how to do that. Found it? What happened? 
 
-##What we'll cover in this section
+## What we'll cover in this section
 +   [Define a controller](#define-a-controller) 
 +   [Use controller in HTML](#use-controller-in-html)
 +   [Store form data](#store-form-data)
@@ -18,7 +18,7 @@ Take a moment and figure out how to do that. Found it? What happened?
 +   [Display items](#display-items)
 +   [Delete items](#delete-items)
 
-###Define a controller
+### Define a controller
 In this section, we'll simultaneously create the HTML and Angular code. These work together to render the application.
 
 Angular controllers control the data flow within Angular applications. Angular has many services that can be [injected](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=what+is+dependency+injection) into controllers to be used within the controller code. Our controller will use the `$scope` service to store properties and functions that will be available to the HTML. We'll use the `$http` service to make AJAX requests to our server.
@@ -37,7 +37,7 @@ todo.controller('TodoController', function($scope, $http){
 }
 ```
 
-###Use controller in HTML
+### Use controller in HTML
 Open `index.html` and define the use of the `TodoController`. Find the `<body>` element and add code so it looks like this:
 
 ```html
@@ -49,7 +49,7 @@ Open `index.html` and define the use of the `TodoController`. Find the `<body>` 
 ```
 What do you think this is doing `ng-controller="TodoController"`?
 
-###Store form data
+### Store form data
 Back in `main.js`, in the controller, go ahead and define an object to store form data. It will live on the `$scope` object:
 
 ```javascript
@@ -59,7 +59,7 @@ todo.controller('TodoController', function($scope, $http){
 }
 ```
 
-###Define a form
+### Define a form
 Now back in `index.html` create a form within the `<div class="container">` element so your code looks like this:
 
 ```html
@@ -156,7 +156,7 @@ Go ahead and test the code. You should see a page that contains a single form el
 
 ![](http://i67.tinypic.com/idy5pe.jpg)
 
-###Debug with Chrome Developer tools
+### Debug with Chrome Developer tools
 Open up [Chrome Developer Tools](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=chrome%20developer%20tools) and take a look at the Console tab. 
 
 We can see that upon the initial page load, we sent a `GET` request to our own server and then responded with an empty object.
@@ -185,7 +185,7 @@ $scope.createTodo = function() {
     
 `$http.post(...)` is a shortcut method that is provided on the `$http` service. After we send the `POST` request along with the form's data `$scope.formData`, we reset the `formData` to be blank `$scope.formData = {};` and set the `$scope.todos` to the response data. 
 
-###What is going on?
+### What is going on?
 Recall that in `server.js` we used Mongoose's `create` method to add items to the database...
 
 ```javascript
@@ -200,7 +200,7 @@ app.post('/api/todos', function(request, response){
 
 ... and the text is coming from the `text` property that is being pulled off of the request body. In our scenario, we're sending the `$scope.formData` object as our request body.
 
-###Invoke `createTodo()`
+### Invoke `createTodo()`
 We'll create a submit button on `<form>` in `index.html`. Within `<div class="form-group">`, and underneath the `<input>` element, let's add a `<button>` element:
 
 ```html
@@ -265,7 +265,7 @@ We'll use the Angular directive [`ng-repeat`](https://docs.angularjs.org/api/ng/
 </div>
 ```
 
-###Delete items
+### Delete items
 Add a [checkbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox) element for every item in todos, using `ng-repeat`. This works just like a standard for-loop where we define a keyword (`todo`) to represent each individual value in the collection (`todos`). We're able to access the properties that are stored on each todo object. As you can see, we are using the `{{todo.text}}` which dynamically generates the HTML element and pulls the text from that specific todo item. The following code should be added within the `todo-list`:
 
 ```html
